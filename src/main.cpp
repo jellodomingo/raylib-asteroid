@@ -1,4 +1,6 @@
 #include <raylib.h>
+#include <math.h>
+#include "game.h"
 
 int main()
 {
@@ -8,9 +10,15 @@ int main()
     InitWindow(screenWidth, screenHeight, "very bad asteroids");
     SetTargetFPS(60);
 
+    Game game = Game(screenWidth, screenHeight);
+
     while (!WindowShouldClose())
     {
+        game.UpdateGame();
+        game.DrawGame();
     }
+
+    game.ShutDown();
 
     CloseWindow();
     return 0;
